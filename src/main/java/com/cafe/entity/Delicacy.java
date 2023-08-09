@@ -29,5 +29,7 @@ public class Delicacy {
    // @Enumerated(EnumType.STRING)    	// Store enums as strings
     @Enumerated(EnumType.ORDINAL)    	// to store enums in integer
     private ItemType type;
+    private Boolean enable;				// 1 for true, 0 for false
+
 }
 

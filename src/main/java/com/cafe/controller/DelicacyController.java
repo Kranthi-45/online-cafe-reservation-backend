@@ -72,6 +72,6 @@ public class DelicacyController {
 		itemService.deleteItem(itemId);
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Item deleted successfully.");
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 }

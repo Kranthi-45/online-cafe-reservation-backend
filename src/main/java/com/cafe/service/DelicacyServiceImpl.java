@@ -62,6 +62,9 @@ public class DelicacyServiceImpl implements DelicacyService {
             if (updatedItem.getType() != null) {
                 existingItem.setType(updatedItem.getType());
             }
+            if (updatedItem.getEnable() != null) {
+                existingItem.setEnable(updatedItem.getEnable());
+            }
             return itemRepository.save(existingItem);
         } else {
             throw new ItemNotFoundException("Item Not Found");
