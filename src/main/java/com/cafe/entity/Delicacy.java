@@ -23,6 +23,7 @@ public class Delicacy {
     private Long itemId;
 
     private String itemName;
+    private String description;
     private Double price;
     private Boolean availability;		// 1 for true, 0 for false
    // @Enumerated(EnumType.STRING)    	// Store enums as strings

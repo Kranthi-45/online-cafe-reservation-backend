@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/items")
+@CrossOrigin(origins = {"http://localhost:4200","*"}, allowedHeaders = "*")
 public class DelicacyController {
     private final DelicacyService itemService;
 
