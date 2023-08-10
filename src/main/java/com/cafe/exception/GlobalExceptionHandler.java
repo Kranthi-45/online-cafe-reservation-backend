@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.cafe.exception.GlobalExceptions.UserNotFoundException;
+
 //Global Exception Handler Instead of creation Each Exception Handler seperately
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -26,4 +28,12 @@ public class GlobalExceptionHandler {
         }
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }
+    
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
 }
+
+
