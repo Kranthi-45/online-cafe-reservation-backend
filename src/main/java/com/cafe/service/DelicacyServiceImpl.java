@@ -3,6 +3,7 @@ package com.cafe.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cafe.entity.Delicacy;
+import com.cafe.enums.ItemType;
 import com.cafe.exception.ItemCreationException;
 import com.cafe.exception.ItemNotFoundException;
 import com.cafe.exception.NoItemsFoundException;
@@ -35,6 +36,11 @@ public class DelicacyServiceImpl implements DelicacyService {
                 .orElseThrow(() -> new ItemNotFoundException("Item not found with ID: " + itemId));
     }
 
+    @Override
+    public List<Delicacy> getItemsByType(ItemType itemType) {
+        return itemRepository.findByType(itemType);
+    }
+    
     @Override
     public Delicacy createItem(Delicacy item) {
         try {

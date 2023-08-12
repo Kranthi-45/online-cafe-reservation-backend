@@ -30,6 +30,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public List<Reservation> getReservationsByUserId(Long userId) {
+        return reservationRepository.findByUserUserId(userId);
+    }
+    
+    @Override
     public Reservation createReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }

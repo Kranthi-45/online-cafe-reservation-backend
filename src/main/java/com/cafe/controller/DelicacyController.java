@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import com.cafe.entity.Delicacy;
+import com.cafe.enums.ItemType;
 import com.cafe.exception.InvalidItemException;
 import com.cafe.exception.ItemNotFoundException;
 import com.cafe.service.DelicacyService;
@@ -44,6 +45,18 @@ public class DelicacyController {
         return ResponseEntity.status(HttpStatus.OK).body(response);    
     }
 
+    @GetMapping("/by-type/{itemType}")
+    public ResponseEntity<Map<String, Object>> getItemsByType(@PathVariable String itemType) {
+        // Convert the itemType string to the enum value
+        ItemType itemTypeEnum = ItemType.valueOf(itemType.toUpperCase());
+        
+        List<Delicacy> items = itemService.getItemsByType(itemTypeEnum);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Items fetched successfully by type: " + itemType);
+        response.put("items", items);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+    
     @PostMapping
     public ResponseEntity<Map<String, Object>> createItem(@RequestBody Delicacy item) {
         if (item.getItemId() != null) {

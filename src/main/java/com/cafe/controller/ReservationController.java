@@ -31,12 +31,29 @@ public class ReservationController {
         return ResponseEntity.ok(reservation);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Reservation>> getReservationsByUserId(@PathVariable Long userId) {
+        List<Reservation> reservations = reservationService.getReservationsByUserId(userId);
+        return ResponseEntity.ok(reservations);
+    }
+    
     @PostMapping
     public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation) {
         Reservation createdReservation = reservationService.createReservation(reservation);
         return ResponseEntity.ok(createdReservation);
     }
 
+    @PutMapping("/confirm/{id}")
+    public ResponseEntity<Reservation> confirmReservation(@PathVariable Long id) {
+        Reservation reservation = reservationService.getReservationById(id);
+        if (reservation == null) {
+            return ResponseEntity.notFound().build();
+        }
+        reservation.setStatus("Booking Confirmed");
+        Reservation confirmedReservation = reservationService.updateReservation(id, reservation);
+        return ResponseEntity.ok(confirmedReservation);
+    }
+    
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
         Reservation updatedReservation = reservationService.updateReservation(id, reservation);
