@@ -3,6 +3,7 @@ package com.cafe.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cafe.entity.Delicacy;
+import com.cafe.enums.ItemType;
 import com.cafe.exception.ItemCreationException;
 import com.cafe.exception.ItemNotFoundException;
 import com.cafe.exception.NoItemsFoundException;
@@ -36,8 +37,14 @@ public class DelicacyServiceImpl implements DelicacyService {
     }
 
     @Override
+    public List<Delicacy> getItemsByType(ItemType itemType) {
+        return itemRepository.findByType(itemType);
+    }
+    
+    @Override
     public Delicacy createItem(Delicacy item) {
         try {
+        	item.setEnable(true);
             return itemRepository.save(item);
         } catch (Exception ex) {
             throw new ItemCreationException("Error creating item: " + ex.getMessage());
@@ -58,6 +65,9 @@ public class DelicacyServiceImpl implements DelicacyService {
             }
             if (updatedItem.getAvailability() != null) {
                 existingItem.setAvailability(updatedItem.getAvailability());
+            }
+            if (updatedItem.getDescription() != null) {
+                existingItem.setDescription(updatedItem.getDescription());
             }
             if (updatedItem.getType() != null) {
                 existingItem.setType(updatedItem.getType());
