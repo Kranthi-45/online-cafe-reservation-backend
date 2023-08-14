@@ -44,6 +44,7 @@ public class DelicacyServiceImpl implements DelicacyService {
     @Override
     public Delicacy createItem(Delicacy item) {
         try {
+        	item.setEnable(true);
             return itemRepository.save(item);
         } catch (Exception ex) {
             throw new ItemCreationException("Error creating item: " + ex.getMessage());
