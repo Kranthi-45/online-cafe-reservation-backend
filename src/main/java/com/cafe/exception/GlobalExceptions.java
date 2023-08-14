@@ -32,5 +32,5 @@ public class GlobalExceptions {
         }
     }
 
-    // You can add more custom exception classes if needed
+   
 }

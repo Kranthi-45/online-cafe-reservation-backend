@@ -26,8 +26,8 @@ public class Delicacy {
     private String description;
     private Double price;
     private Boolean availability;		// 1 for true, 0 for false
-   // @Enumerated(EnumType.STRING)    	// Store enums as strings
-    @Enumerated(EnumType.ORDINAL)    	// to store enums in integer
+   // @Enumerated(EnumType.STRING)    	// to store enums as strings
+    @Enumerated(EnumType.ORDINAL)    	// to store enums in integer  or // bydafult also dont specify stores as integers
     private ItemType type;
     private Boolean enable;				// 1 for true, 0 for false
 

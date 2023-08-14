@@ -13,5 +13,4 @@ public class OnlineCafeReservationBackend1Application {
 		SpringApplication.run(OnlineCafeReservationBackend1Application.class, args);
 		System.out.println("Online Cafe Application Started...");
 	}
-
 }

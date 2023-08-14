@@ -65,6 +65,9 @@ public class DelicacyServiceImpl implements DelicacyService {
             if (updatedItem.getAvailability() != null) {
                 existingItem.setAvailability(updatedItem.getAvailability());
             }
+            if (updatedItem.getDescription() != null) {
+                existingItem.setDescription(updatedItem.getDescription());
+            }
             if (updatedItem.getType() != null) {
                 existingItem.setType(updatedItem.getType());
             }

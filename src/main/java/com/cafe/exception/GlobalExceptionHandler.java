@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(errorResponse);
     }
 
-    // Define additional methods for other exception types if needed
+    
     private HttpStatus determineHttpStatus(Exception ex) {
         if (ex instanceof InvalidItemException || ex instanceof ItemCreationException) {
             return HttpStatus.BAD_REQUEST;

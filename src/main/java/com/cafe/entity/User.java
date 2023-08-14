@@ -12,11 +12,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users")
 @Data
-@NoArgsConstructor
+
 public class User {
-    public User(String string) {
+	 public User() {  
+	    }
+   public User(String string) {
 		// TODO Auto-generated constructor stub
 	}
+  
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
