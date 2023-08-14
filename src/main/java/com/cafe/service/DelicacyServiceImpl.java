@@ -44,6 +44,7 @@ public class DelicacyServiceImpl implements DelicacyService {
     @Override
     public Delicacy createItem(Delicacy item) {
         try {
+        	item.setEnable(true);
             return itemRepository.save(item);
         } catch (Exception ex) {
             throw new ItemCreationException("Error creating item: " + ex.getMessage());
@@ -64,6 +65,9 @@ public class DelicacyServiceImpl implements DelicacyService {
             }
             if (updatedItem.getAvailability() != null) {
                 existingItem.setAvailability(updatedItem.getAvailability());
+            }
+            if (updatedItem.getDescription() != null) {
+                existingItem.setDescription(updatedItem.getDescription());
             }
             if (updatedItem.getType() != null) {
                 existingItem.setType(updatedItem.getType());
